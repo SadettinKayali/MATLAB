@@ -1,0 +1,21 @@
+%% Import Data
+% Instructions are in the task pane to the left. Complete and submit each task one at a time.
+% This code creates a string array of player positions.
+positions = ["G","G-F","F-G","F","F-C","C-F","C"]
+%% Task 1
+playerInfo=readtable("bballPlayers.txt")
+%% Task 2
+playerInfo.pos = categorical(playerInfo.pos);
+%% Task 3
+playerInfo.pos = categorical(playerInfo.pos,positions);
+%% Task 4
+playerInfo = rmmissing(playerInfo)
+%% Task 5
+allStats=readtable("bballStats.txt")
+%% Task 6
+allStats(:,19:end) = []
+%% Further Practice
+idx = playerInfo.name == "LeBron James";
+ID = playerInfo.playerID(idx)
+LJstats = allStats( ...
+    allStats.playerID == string(ID),:)
